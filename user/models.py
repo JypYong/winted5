@@ -11,7 +11,7 @@ class User(models.Model):
     carrer_filter   = models.ManyToManyField('company.Carrer', through='User_carrer_filter' , related_name= 'user_careers_filters')
     apllied_status  = models.ManyToManyField('company.Company', through='AppliedStatus', related_name='applied_status')
     recomender      = models.ManyToManyField ('self' , symmetrical=False ,through= 'Recommendation', related_name='recomenders')
-    resumes         = models.ForeignKey('Resume' , on_delete=models.CASCADE , related_name='resumes')
+    
     
 
     class Meta:
@@ -62,6 +62,7 @@ class Recommendation(models.Model):
 
 
 class Resume(models.Model):
+    user        =  models.ForeignKey('User' , on_delete=models.CASCADE)
     intro       =  models.CharField(max_length=200)
     past_carrer =  models.ForeignKey('Past_carrer',on_delete=models.CASCADE)
     grade       =  models.ForeignKey('Grade', on_delete=models.CASCADE)
