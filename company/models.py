@@ -31,8 +31,8 @@ class Maincategory(models.Model):
         db_table='maincategories'
 
 class Money(models.Model):
-    recommend = models.DecimalField(max_digits=10, decimal_places=2,null=True,default='')
-    applicant = models.DecimalField(max_digits=10, decimal_places=2,null=True,default='')
+    recommend = models.IntegerField()
+    applicant = models.IntegerField()
 
     class Meta:
         db_table='moneys'
